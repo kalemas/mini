@@ -6,7 +6,7 @@
 	url = git@github.com:kalemas/libcurlwp8.git
 [submodule "bibletime"]
 	path = bibletime
-	url = git@github.com:bibletime/mini.git
+	url = git@github.com:kalemas/bibletime.git
 [submodule "clucene"]
 	path = clucene
 	url = git@github.com:kalemas/clucene.git
