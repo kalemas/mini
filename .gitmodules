@@ -1,12 +1,12 @@
 [submodule "sword"]
 	path = sword
-	url = git@github.com:kalemas/sword.git
+	url = https://github.com/kalemas/sword.git
 [submodule "curl"]
 	path = curl
-	url = git@github.com:kalemas/libcurlwp8.git
+	url = https://github.com/kalemas/libcurlwp8.git
 [submodule "bibletime"]
 	path = bibletime
-	url = git@github.com:kalemas/bibletime.git
+	url = https://github.com/kalemas/bibletime.git
 [submodule "clucene"]
 	path = clucene
-	url = git@github.com:kalemas/clucene.git
+	url = https://github.com/kalemas/clucene.git
