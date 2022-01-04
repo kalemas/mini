@@ -4,9 +4,6 @@
 [submodule "curl"]
 	path = curl
 	url = https://github.com/kalemas/libcurlwp8.git
-[submodule "bibletime"]
-	path = bibletime
-	url = https://github.com/kalemas/bibletime.git
 [submodule "clucene"]
 	path = clucene
 	url = https://github.com/kalemas/clucene.git
