@@ -1,0 +1,152 @@
+/**
+ * Theme by tabthorpe@FreeBSD.org *
+ */
+
+#content {
+    margin: 5px;
+}
+
+#content table {
+    margin:0;
+    padding:0;
+    border-spacing:10px;
+    border-collapse: collapse;
+    vertical-align: top;
+}
+
+#content table th {
+    padding: 0 0 2px 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 115%;
+}
+
+a {
+    text-decoration:none;
+    font-weight:normal;
+    color: #FOREGROUND_COLOR#;
+    padding:2px;
+}
+
+.inline {
+    display: inline;
+}
+
+td.entry, div.entry {
+    padding: 5px;
+    vertical-align: top;
+}
+
+div.entry {
+    padding: 5px;
+}
+td.currententry, div.currententry {
+    padding: 5px;
+    vertical-align: top;
+    font-weight:bold;
+}
+
+td.entry + td.entry {
+    margin-left: 5px;
+}
+
+div.currententry {
+    font-weight:bold;
+    padding: 5px;
+}
+
+.footnote {
+    color: #CROSSREF_COLOR#;
+}
+
+.strongnumber {
+    vertical-align: top;
+    font-size: 60%;
+    color: #CROSSREF_COLOR#;
+}
+
+.morphcode {
+    vertical-align: top;
+    font-size: 60%;
+    color: #CROSSREF_COLOR#;
+}
+
+.lemma {
+}
+
+.sectiontitle {
+    font-weight: bold;
+    font-size: large;
+}
+
+.entry + .sectiontitle {
+    margin-top:35px;
+    padding-top:35px;
+}
+
+.booktitle {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.foreign {
+}
+
+.jesuswords {
+    color: #JESUS_WORDS_COLOR#;
+    font-size: 0.9em;
+}
+.jesuswords a {
+    color: #JESUS_WORDS_COLOR#;
+}
+
+.crossreference {
+    color: #CROSSREF_COLOR#;
+}
+
+a[name="crossref"] {
+    font-size: small;
+    color: #CROSSREF_COLOR#
+    /* color: #4A766E /* # DarkGreenCopper */
+}
+
+.name > .divine {
+   font-variant: small-caps;
+}
+
+.quotation {
+}
+
+.poetry {
+}
+
+.sup {
+    vertical-align: super;
+}
+
+.sub {
+    vertical-align: sub;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.highlightwords {
+    background-color: #HIGHLIGHT#;
+}
+.highlightwords2 {
+    background-color: #ffaa00;
+}

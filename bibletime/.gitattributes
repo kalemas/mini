@@ -1,0 +1,15 @@
+* text=auto
+*.svg -text
+
+# Make git diff warn about trailing space and tabs in indentation:
+CMakeLists.txt text whitespace=space-before-tab,tab-in-indent,trailing-space
+*.c            text whitespace=space-before-tab,tab-in-indent,trailing-space
+*.cpp          text whitespace=space-before-tab,tab-in-indent,trailing-space
+*.h            text whitespace=space-before-tab,tab-in-indent,trailing-space
+*.js           text whitespace=space-before-tab,tab-in-indent,trailing-space
+*.tmpl         text whitespace=space-before-tab,tab-in-indent,trailing-space
+
+# Ignore these files in "git archive":
+/.git* export-ignore
+/.mailmap export-ignore
+/.travis.yml export-ignore
