@@ -10,58 +10,59 @@ DEFINES += BT_MINI_VERSION=\\\"$${VERSION}\\\"
 
 
 INCLUDEPATH += . \
-    ../../../bibletime/src/frontend-mini \
+    ../../../frontend \
 
 
 SOURCES += \
-    ../../../bibletime/src/bibletimeapp.cpp \
-    ../../../bibletime/src/frontend-mini/btmini.cpp \
-    ../../../bibletime/src/frontend-mini/models/btminimodulenavigationmodel.cpp \
-    ../../../bibletime/src/frontend-mini/models/btminimodulesmodel.cpp \
-    ../../../bibletime/src/frontend-mini/models/btminimoduletextmodel.cpp \
-    ../../../bibletime/src/frontend-mini/models/btminisettingsmodel.cpp \
-    ../../../bibletime/src/frontend-mini/view/btminilayoutdelegate.cpp \
-    ../../../bibletime/src/frontend-mini/view/btminiview.cpp \
-    ../../../bibletime/src/frontend-mini/ui/btminimenu.cpp \
-    ../../../bibletime/src/frontend-mini/ui/btminipanel.cpp \
-    ../../../bibletime/src/frontend-mini/ui/btministyle.cpp \
-    ../../../bibletime/src/frontend-mini/ui/btminiui.cpp \
-    ../../../bibletime/src/frontend-mini/ui/btminiworkswidget.cpp \
-    ../../../bibletime/src/frontend-mini/ui/btminiclippingswidget.cpp
+    ../../../bibletime/src/frontend/bibletimeapp.cpp \
+    ../../../bibletime/src/frontend/messagedialog.cpp \
+    ../../../frontend/btmini.cpp \
+    ../../../frontend/models/btminimodulenavigationmodel.cpp \
+    ../../../frontend/models/btminimodulesmodel.cpp \
+    ../../../frontend/models/btminimoduletextmodel.cpp \
+    ../../../frontend/models/btminisettingsmodel.cpp \
+    ../../../frontend/ui/btminiclippingswidget.cpp
+    ../../../frontend/ui/btminimenu.cpp \
+    ../../../frontend/ui/btminipanel.cpp \
+    ../../../frontend/ui/btministyle.cpp \
+    ../../../frontend/ui/btminiui.cpp \
+    ../../../frontend/ui/btminiworkswidget.cpp \
+    ../../../frontend/view/btminilayoutdelegate.cpp \
+    ../../../frontend/view/btminiview.cpp \
 
 
 HEADERS += \
-    ../../../bibletime/src/bibletimeapp.h \
-    ../../../bibletime/src/frontend-mini/btmini.h \
-    ../../../bibletime/src/frontend-mini/models/btminimodulesmodel.h \
-    ../../../bibletime/src/frontend-mini/models/btminimodulenavigationmodel.h \
-    ../../../bibletime/src/frontend-mini/models/btminimoduletextmodel.h \
-    ../../../bibletime/src/frontend-mini/models/btminisettingsmodel.h \
-    ../../../bibletime/src/frontend-mini/view/btminiview.h \
-    ../../../bibletime/src/frontend-mini/view/btminilayoutdelegate.h \
-    ../../../bibletime/src/frontend-mini/ui/btminimenu.h \
-    ../../../bibletime/src/frontend-mini/ui/btminipanel.h \
-    ../../../bibletime/src/frontend-mini/ui/btministyle.h \
-    ../../../bibletime/src/frontend-mini/ui/btminiui.h \
-    ../../../bibletime/src/frontend-mini/ui/btminiworkswidget.h \
-    ../../../bibletime/src/frontend-mini/ui/btminiwidget.h \
-    ../../../bibletime/src/frontend-mini/ui/btminiclippingswidget.h
+    ../../../bibletime/src/frontend/bibletimeapp.h \
+    ../../../frontend/btmini.h \
+    ../../../frontend/models/btminimodulenavigationmodel.h \
+    ../../../frontend/models/btminimodulesmodel.h \
+    ../../../frontend/models/btminimoduletextmodel.h \
+    ../../../frontend/models/btminisettingsmodel.h \
+    ../../../frontend/ui/btminiclippingswidget.h
+    ../../../frontend/ui/btminimenu.h \
+    ../../../frontend/ui/btminipanel.h \
+    ../../../frontend/ui/btministyle.h \
+    ../../../frontend/ui/btminiui.h \
+    ../../../frontend/ui/btminiwidget.h \
+    ../../../frontend/ui/btminiworkswidget.h \
+    ../../../frontend/view/btminilayoutdelegate.h \
+    ../../../frontend/view/btminiview.h \
 
 
 RESOURCES += \
     ../../../btmini.qrc \
-    ../../../bibletime/src/frontend-mini/ui/btministyle.qrc \
+    ../../../frontend/ui/btministyle.qrc \
 
 
 OTHER_FILES += \
-    ../../../bibletime/src/display-templates/Basic-Mini.tmpl \
-    ../../../bibletime/src/frontend-mini/todo.txt \
+    ../../../frontend/mini-display-template.tmpl \
+    ../../../frontend/todo.txt \
 
 
 # Translation
 TRANSLATIONS += \
     ../../../bibletime/i18n/messages/bibletime_ui_ru.ts \
-    ../../../bibletime/src/frontend-mini/translations/bibletimemini_ru.ts \
+    ../../../frontend/translations/bibletimemini_ru.ts \
 
 
 # Android platform
@@ -136,7 +137,7 @@ DEPLOYMENT += mini_deployment
 # Windows Mobile Platform
 wince {
 DEFINES += BT_STATIC_TEXT
-SOURCES += ../../../bibletime/src/frontend-mini/view/btstatictext.cpp
+SOURCES += ../../../frontend/view/btstatictext.cpp
 }
 
 

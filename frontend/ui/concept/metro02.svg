@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="480"
+   height="800"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="metro02.svg">
+  <script
+     xlink:href=""
+     id="script3769" />
+  <script
+     xlink:href=""
+     id="script3767" />
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="317.96181"
+     inkscape:cy="550.92264"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:showpageshadow="false"
+     showborder="true"
+     borderlayer="false"
+     inkscape:snap-global="false"
+     showguides="false"
+     inkscape:guide-bbox="true"
+     inkscape:snap-page="true"
+     inkscape:snap-bbox="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1138"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1">
+    <sodipodi:guide
+       orientation="1,0"
+       position="0,794.28572"
+       id="guide3757" />
+    <inkscape:grid
+       type="xygrid"
+       id="grid3759"
+       empspacing="10"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-252.36218)"
+     onload="console.log('start');
+document[baseColor] = '#ff8800';
+console.log(document[baseColor]);">
+    <g
+       id="g3999">
+      <rect
+         inkscape:label="#panel"
+         y="252.36218"
+         x="0"
+         height="100"
+         width="480"
+         id="panelBackground"
+         style="color:#000000;fill:#ff8800;fill-opacity:1;fill-rule:evenodd;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <g
+         id="control"
+         onmousedown="document.getElementById(this.id + 'Area').style.fill = 'black';
+document.getElementById(this.id + 'Path').style.stroke = '#ff8800';"
+         onmouseup="document.getElementById(this.id + 'Area').style.fill = '#ff8800';
+document.getElementById(this.id + 'Path').style.stroke = 'white';">
+        <rect
+           transform="scale(-1,1)"
+           style="color:#000000;fill:#ff8800;fill-opacity:1;fill-rule:evenodd;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="controlArea"
+           width="100"
+           height="100"
+           x="-480"
+           y="252.36218"
+           inkscape:label="#panel" />
+        <path
+           sodipodi:type="arc"
+           style="fill:none;stroke:#ffffff;stroke-width:4.9000001;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           id="controlPath"
+           sodipodi:cx="430"
+           sodipodi:cy="50"
+           sodipodi:rx="40"
+           sodipodi:ry="40"
+           d="m 470,50 a 40,40 0 1 1 -80,0 40,40 0 1 1 80,0 z"
+           transform="matrix(0.91671298,0,0,0.91671298,35.813417,256.52653)" />
+      </g>
+      <g
+         id="place"
+         onmousedown="document.getElementById('placeArea').style.fill = 'black';
+document.getElementById('placeText').style.fill = '#ff8800';"
+         onmouseup="document.getElementById('placeArea').style.fill = '#ff8800';
+document.getElementById('placeText').style.fill = 'white';">
+        <rect
+           transform="scale(-1,1)"
+           style="color:#000000;fill:#ff8800;fill-opacity:1;fill-rule:evenodd;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="placeArea"
+           width="174.24265"
+           height="100"
+           x="-294.24265"
+           y="252.36218"
+           inkscape:label="#panel"
+           name="area" />
+        <text
+           xml:space="preserve"
+           style="font-size:34px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma"
+           x="137.3457"
+           y="329.69904"
+           id="placeText"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3779"
+             x="137.3457"
+             y="329.69904">Matt 5:1</tspan></text>
+      </g>
+      <g
+         id="module"
+         onmousedown="document.getElementById(this.id + 'Area').style.fill = 'black';
+document.getElementById(this.id + 'Text').style.fill = '#ff8800';"
+         onmouseup="document.getElementById(this.id + 'Area').style.fill = '#ff8800';
+document.getElementById(this.id + 'Text').style.fill = 'white';">
+        <rect
+           style="color:#000000;fill:#ff8800;fill-opacity:1;fill-rule:evenodd;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="moduleArea"
+           width="120"
+           height="100"
+           x="0"
+           y="252.36218"
+           inkscape:label="#panel" />
+        <text
+           xml:space="preserve"
+           style="font-size:34px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma"
+           x="17.313709"
+           y="329.61115"
+           id="moduleText"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3775"
+             x="17.313709"
+             y="329.61115">KJV</tspan></text>
+      </g>
+    </g>
+    <rect
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect4012"
+       width="480"
+       height="800"
+       x="0"
+       y="0"
+       transform="translate(0,252.36218)" />
+  </g>
+</svg>

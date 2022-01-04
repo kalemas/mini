@@ -1,5 +1,5 @@
 # BibleTime Core, could be used for Desktop, Mini and Mobile
-BT_VERSION = 2.10.0_rc1
+BT_VERSION = 3.0.2
 DEFINES += BT_VERSION=\\\"$${BT_VERSION}\\\"
 
 
@@ -9,23 +9,21 @@ gcc:QMAKE_CXXFLAGS_DEBUG += -Wno-switch -Wno-unused-parameter \
     -fpermissive  # TEMP
 
 
-INCLUDEPATH += ../../../bibletime/src
-
-
 SOURCES += \
     ../../../bibletime/src/backend/bookshelfmodel/btbookshelffiltermodel.cpp \
     ../../../bibletime/src/backend/bookshelfmodel/btbookshelfmodel.cpp \
     ../../../bibletime/src/backend/bookshelfmodel/btbookshelftreemodel.cpp \
-    ../../../bibletime/src/backend/bookshelfmodel/moduleitem.cpp \
-    ../../../bibletime/src/backend/bookshelfmodel/languageitem.cpp \
-    ../../../bibletime/src/backend/bookshelfmodel/item.cpp \
     ../../../bibletime/src/backend/bookshelfmodel/categoryitem.cpp \
     ../../../bibletime/src/backend/bookshelfmodel/indexingitem.cpp \
+    ../../../bibletime/src/backend/bookshelfmodel/item.cpp \
+    ../../../bibletime/src/backend/bookshelfmodel/languageitem.cpp \
+    ../../../bibletime/src/backend/bookshelfmodel/moduleitem.cpp \
     ../../../bibletime/src/backend/btbookmarksmodel.cpp \
+    ../../../bibletime/src/backend/btglobal.cpp \
     ../../../bibletime/src/backend/btinstallbackend.cpp \
     ../../../bibletime/src/backend/btinstallmgr.cpp \
     ../../../bibletime/src/backend/btinstallthread.cpp \
-    ../../../bibletime/src/backend/btmoduletreeitem.cpp \
+    ../../../bibletime/src/backend/btsignal.cpp \
     ../../../bibletime/src/backend/config/btconfig.cpp \
     ../../../bibletime/src/backend/config/btconfigcore.cpp \
     ../../../bibletime/src/backend/cswordmodulesearch.cpp \
@@ -46,6 +44,7 @@ SOURCES += \
     ../../../bibletime/src/backend/managers/btstringmgr.cpp \
     ../../../bibletime/src/backend/managers/cdisplaytemplatemgr.cpp \
     ../../../bibletime/src/backend/managers/clanguagemgr.cpp \
+    ../../../bibletime/src/backend/managers/colormanager.cpp \
     ../../../bibletime/src/backend/managers/cswordbackend.cpp \
     ../../../bibletime/src/backend/managers/referencemanager.cpp \
     ../../../bibletime/src/backend/rendering/btinforendering.cpp \
@@ -56,7 +55,6 @@ SOURCES += \
     ../../../bibletime/src/backend/rendering/chtmlexportrendering.cpp \
     ../../../bibletime/src/backend/rendering/cplaintextexportrendering.cpp \
     ../../../bibletime/src/backend/rendering/ctextrendering.cpp \
-    ../../../bibletime/src/btglobal.cpp \
     ../../../bibletime/src/util/bticons.cpp \
     ../../../bibletime/src/util/cresmgr.cpp \
     ../../../bibletime/src/util/directory.cpp \
@@ -76,7 +74,7 @@ HEADERS += \
     ../../../bibletime/src/backend/btinstallbackend.h \
     ../../../bibletime/src/backend/btinstallmgr.h \
     ../../../bibletime/src/backend/btinstallthread.h \
-    ../../../bibletime/src/backend/btmoduletreeitem.h \
+    ../../../bibletime/src/backend/btsignal.h \
     ../../../bibletime/src/backend/config/btconfig.h \
     ../../../bibletime/src/backend/config/btconfigcore.h \
     ../../../bibletime/src/backend/cswordmodulesearch.h \
@@ -90,15 +88,15 @@ HEADERS += \
     ../../../bibletime/src/backend/filters/plaintohtml.h \
     ../../../bibletime/src/backend/filters/teitohtml.h \
     ../../../bibletime/src/backend/filters/thmltohtml.h \
+    ../../../bibletime/src/backend/keys/cswordkey.h \
+    ../../../bibletime/src/backend/keys/cswordldkey.h \
+    ../../../bibletime/src/backend/keys/cswordtreekey.h \
+    ../../../bibletime/src/backend/keys/cswordversekey.h \
     ../../../bibletime/src/backend/managers/btstringmgr.h \
     ../../../bibletime/src/backend/managers/cdisplaytemplatemgr.h \
     ../../../bibletime/src/backend/managers/clanguagemgr.h \
     ../../../bibletime/src/backend/managers/cswordbackend.h \
     ../../../bibletime/src/backend/managers/referencemanager.h \
-    ../../../bibletime/src/backend/keys/cswordkey.h \
-    ../../../bibletime/src/backend/keys/cswordldkey.h \
-    ../../../bibletime/src/backend/keys/cswordtreekey.h \
-    ../../../bibletime/src/backend/keys/cswordversekey.h \
     ../../../bibletime/src/backend/rendering/cbookdisplay.h \
     ../../../bibletime/src/backend/rendering/cchapterdisplay.h \
     ../../../bibletime/src/backend/rendering/cdisplayrendering.h \
@@ -106,7 +104,6 @@ HEADERS += \
     ../../../bibletime/src/backend/rendering/chtmlexportrendering.h \
     ../../../bibletime/src/backend/rendering/cplaintextexportrendering.h \
     ../../../bibletime/src/backend/rendering/ctextrendering.h \
-    ../../../bibletime/src/util/btsignal.h \
     ../../../bibletime/src/util/cresmgr.h \
     ../../../bibletime/src/util/directory.h \
     ../../../bibletime/src/util/tool.h \
@@ -160,9 +157,6 @@ else {
     QT += webkit
 }
 DEFINES += BT_MINI_WEBKIT
-}
-else:!mini:!mobile {
-warning("Non Mini build: WebKit required")
 }
 
 # Includes

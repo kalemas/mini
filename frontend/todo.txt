@@ -1,0 +1,249 @@
+kalemas@mail.ru :
+=== tasks ===
++   bug: somewhat with scrolling on tips if opened after first Bible installation
++   android: style switching does not working properly
++   switch currentIndex in view from time to time on on its deletion (avoid bad behavior with auto-scrolling)
++       current item should be changed right after current item was left the screen
++       setup default modules occurs even on install sources reload
+=== 1.0.4 ===
++   text/verses selection facility
++       redraw handle
++       select 1 more character for end of selction
++       scroll area for handles, top - thiner, relative to view height
++       only Copy function atm
++       cancel selection
++       size of selection handle relative to ui size, not text
++   android: scrolling does not stops if app was put into bg
++   back button close on context widgets
++   click on non menu area when service menu for works widget active cause crash
++   limit selection to screen height, for too long entries
+=== 1.2.0 ===
++   back button wasn't work in installmanager on first Bible install
+    symbian: text input in search view does not activate sip
+    symbian: S60 style draw white text on lime green after restart
+        setup emulator
++   android: sometimes failed to start after app was put into bg
++   end selection when call clear for unused items instead of when set sleep
+    add parallel works for incompatible module types
++   do not start tapping when handle was pressed
++   android: are there fallback fonts, try to fix unrecognized characters?
+?   adjust base size selection: tablets got too large text
+        base size is height of basic font for interface
+            on small screen it should be fixed in physical units for example 7mm
+            on tablet it should be fixed in physical units lets take 7mm
++   < back button return to previous level in install manager and settings
++   fullscreen maybe by double tapping
+        test on android
++   instead of diabled arrow in top panel add "+ subview"
+        there is no standard icon for +, need we to have all icons from app?
+    mini tries to install in /usr/share on linux
+    textual footnote references make <sup>
++   ievenn main widget t filter move assert inside if()
++   initial session should contain of two Bible lists
+    send app background cause crash (Android-5.0.5)
+    initial module installation does not have <Back button
+=== 1.3.0 ===
+    bookmarks
++       rename list
++       add,remove lists
++       remove bookmark=
++       pass bookmark to selected list
++       removing bookmark invalidates last item index
++       verse with range
++           cswordversekey setKey
++       initial session creation
++       render item text
++       remove bookmark for invalid index
++       install model seem have stricture problems
++       folder must have unique name
+
+    epic rebasing
++       icons
++       there was problems with range keys in bookmarks
+        module name in entry name in bookmarks
+
+    restore search term during one session
+    find correct facility to retrieve icons
+        i need some additional icons, its best for if they would be provided by style
+            add new view at left/right
+        whole set should be provided for night mode
+            night mode by style is preferred in Qt, just like Symbian styles
+            but other implementation for night mode would be, for example by application palette
+    with mini style standard context menu is solid rectangle, make handler for custom context menus in style
+    encrypted modules
+    in handbook make it clean for understanding module/text/work  definition
+    "Context view explanation is still too short for me"
+    android: keep device on
+    per module font family
+    in context display messages if default modules absent
+    fix text selection for paralleled display
+=== some future version ===
+    right click - service menu, middle click - context menu
+    make it able to display two or more widgets at same time
+        We have to know minimum widget width, and if we could place two widgets at same time do so.
+               open search  module and place selection at left, open settings  and context at right
+            if context widget is opened we are able to update it as user press anywhere in main reading widget
+    Open module selection dialog on new list opened
+        side slide module selection list would be good, then slide on top and module list is shown
+    plus icon instead of inactive arrow in top panel
+    better way to deploy sword locales
+    save search string during session(after ui recreate)
+    clippings model
+        based on text model
+            make List polymorph class
+            allow addition of verses, store current item in model
+        read/write data to local storage
+        types of List
+            from Sword Module
+            search model
+                with highlighting
+                with scope
+            from Context
+                current context made from string
+                multiple commentary modules
+                multiple Dictionaty/Lexicon modules
+            clippings model
+                multipe entries of any module scoped to any range
+    allow notes
+    context for pictures with zoom/pan support
+    context for references of type "look at <this module ref>"
+?   sometimes list get displaced vertically (RSP Rom 9-15)
+    improve search query with * in AND mode
+    when decode context info KJV is used and cause incorrect content
+?   auto-scrolling for search and context views
+    resize subview width, its primarily for tablets
+        need to add two functions: expand window, contract window
+    make sword text model and install model suitable for main repo
+    move CInfoDisplay text processing to Core
+    search by G25 (strong:G0025), and it is ambiguous G0025 and G25 in search
+        there is bug with highlighting, search for strong:G25 highlights strong:G2523
+    new look and feel, ios style, fusion-based
+    clippings
+        reorganize ui
+            1. move InstallManager to Module Selection, add Clippings to bottom bar
+            2. remove bottom bar and add menu to top-right button (+ possible to add some non obvious functions here, + more space)
+    in qtextdocument center headers
+        make own filters for before:/after: selectors
+            it is not simple, because we can not obtain :after insertion point and resolve correct selector
+		qtextdocument is limited, we ought to wait qwebengine
+    apply settings on button press
++   always open Settings on main page, not Handbook
++       reimplement windows switching
+    turn on/off text features (notes)
+    sliding effect for main stacked widget
+
+?   replace panel with android panel
+-   move all logic from models to btminilogic.cpp
++   adding functionality using default function parameters is bad practice, when you want to change them
+    download indexes feature
+
+    centralized parallel processing:
+        get data from sword
+        install a module
+        build search index (maybe build will be resumeable, maybe index displayed verses)
+        maybe backend reloading
+        ability for blocking execution (e.g. first text entry)
+        make this suitable for main repo
+        should know what is current view (text/install), current text, probably via signals/slots
+    install module logic:
+        pressing on a module display dialog 'Dow You want to Install %1?'
+        - any existing panel becomes a progress bar with cancel button
+        - installation starts in parallel thread, user able to proceed selecting modules
+        progress bar shown in module item
+
+    settings ui
+        restrict v11n mode feature: off, kjv, synodal, vulg, ...
+        chapter mode
+?   design changes
+        cut-off menu overlays, open contex full-size
+        sliding panels for queries
+        hideable bottom panel
+        top area to indicate current location
+    selecting items and active item
+    current subview indication
+    footnote display using icon
+?   restore original BT paths, or dirs in resources
+    bug, delayed module verses layout stops on missed content
+    bug, sometimes on Matt n navigation second level opens as books again
+    bug, sometimes book stay unlocalized in text view in chapter area
+    unlock locked modules
+
+    make commentary context parallel computed
+        make work array and threads array static
+    current module seem to fail to get text from sword after module installation
+
+    memory leaking on wince, crtdebug detect leaking starting from QApplication init
+    QTextDocument issues
+        not load external style sheet
+            it would be possible to load with absolute path
+        font enumeration in font-family dont work
+    replace unistd.h with io.h/direct.h on wince
+    merge linked verses in model
+    ? new menu look
+    context for word even without tagging (dictionary lookup)
+    new system for context modules: add/remove from context lookup
+
+    new style of sliding, next view doesn't slide but fade
+    topbar with animated effect when go sub level
+    find way to communicate with scrollbar to display current position and marks
+?   maybe make scroll bar transparent and overlapping view
+?   scrolling like book pages, good because user's eyes always move all around the screen
+    bookmarks would be named as Cuttings or Clippings
+    notes - based on personal commentary module with av11n mapping support remark, should be created by app
+
+=== tasks for future ===========================================================
+    verse features
+        bookmarks
+            nested bookmarks folders
+            date created (for sorting)
+            place in uri format (sword://Module/Key)
+            static / dynamic
+        verse colors
+    
+    re-concept interface
+
+    Link, like Opera Link to synchronize bookmarks and all Per Verse Data among all user devices
+        maybe need Sword change that every verse in Bibile at every v11n has unique id
+    multitouch
+    linked lists
+        slide list and stroke down/up to link
+        link neighbor lists: items will be fitted by height, empty verses will be displayed hollow
+    verse features
+        ratings/favourite
+            no ranges, byte-array
+        readings
+            reading should be as restoreable view
+            get / set (on switch and destroy) place
+            remember module also
+            place, module, date started, date visited
+?        colors
+        reading count
+            created as byte-array for every versification
+?            increased when exceed 256-bound
+?            converted between v11ns on call
+            or maybe implement this through history
+
+?    sliding, animated backgrounds
+?    read html / txt / rtf / doc formats
+
+=== SWORD ======================================================================
+    load locales on demand
+%   av11n mappings
+    load av11n on demand from file
+    make more steps for search
+
+=== remarks ====================================================================
+Issues
+    Since sip panel didn't raise sip button it is not able to change software keyboard in the application.
+        also default keyboard should have enter/return key to launch search. (wince)
+    To enable g-sensor support for runtime orientation change use third party applications like G-Config. (wince)
+Qt
+    we get nothing on application deactivation under wince, solved by using winEvent
+    QFont::setPointSize don't work on wince, solved by QFontMetrics::height
+    SIP adjusted to the bottom of screen
+    qt color names not used on device to optimize library size
+Sword
+    exception with /MD option and signed c-strings, require /J
+BibleTime
+    set BT_MINI where needed
+    static QDir initialization in directory.cpp causes exception on wince

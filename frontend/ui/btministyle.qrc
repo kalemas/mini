@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/style-mini">
+        <file alias="menu-frame.png">resources/menu-frame.png</file>
+        <file alias="arrow-left.svg">resources/arrow-left.svg</file>
+        <file alias="arrow-right.svg">resources/arrow-right.svg</file>
+        <file alias="arrow-left-inactive.svg">resources/arrow-left-inactive.svg</file>
+        <file alias="arrow-right-inactive.svg">resources/arrow-right-inactive.svg</file>
+        <file alias="menu-night-frame.png">resources/menu-night-frame.png</file>
+    </qresource>
+</RCC>

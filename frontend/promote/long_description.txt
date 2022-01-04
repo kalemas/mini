@@ -1,0 +1,16 @@
+Large library of biblical texts from Crosswire Bible society available for downloading via internet. You would open as many views as you need: one for New Testament reading, another for Old Testament, dictionary or commentary. Get word definition or verse commentary by short pressing (you need corresponding modules installed). Get instant search or read several Bible texts in parallel on one screen.
+
+
+It is cross-platform and open development application, available for many mobile platforms. Visit http://bibletimemini.sf.net/ if you need more information or would like to help.
+
+
+points, russian:
+* Добавляйте новые окна по долгому нажатию, переключайте их жестами вправо/влево
+* Помимо Библии в любом окне можно разместить комментарий, словарь, наставление на день, богословские книги и др.
+* Откройте по окну для разных мест Писания и читайте Библию в своем темпе, прогресс чтения сохраняется
+* Не ограничивайте себя одной главой, текст подгружается по мере чтения
+* Все тексты доступны оффлайн через большую многоязычную электронную библиотеку
+* Контекст для слова по короткому нажатию (не все тексты содержат информацию с номерами Стронга, так же понадобится загрузить словарь с определениями)
+* Для поиска придется подождать генерации поискового индекса, стоит подождать ради мгновенного поиска по всей Библии
+* Поддерживается поиск по номерам Стронга, Ночной режим интерфейса, подробнее в Руководстве
+* Разработка ведется на нескольких платформах по открытой модели - меняйте телефон, не меняйте приложение, подробнее на сайте http://bibletimemini.sf.net/

@@ -1,0 +1,197 @@
+<head>
+  <style type="text/css">
+    a {
+    color: #4aacff;
+    font-weight: bold;
+    text-decoration: none;
+    }
+    .inactive {
+    color: #888888;
+    vertical-align: middle;
+    text-align: center;
+    }
+    .jesuswords {
+    color: #9c2323;
+    }
+    .footnote {
+    vertical-align: middle;
+    color: #4aacff;
+    font-weight: bold;
+    font-size: 140%;
+    }
+
+    .footnote:before { content:"("; }
+    .footnote:after { content:")"; }
+
+    .footnotepre {
+    font-style: italic;
+    }
+
+    .crossreference {
+    font-size: 80%;
+    color: #4aacff;
+    }
+
+    #bible .crossreference:before  { content:" ["; }
+    #bible .crossreference:after  { content:"]"; }
+
+    .crossreference a {
+    color: #4aacff;
+    }
+    .crossreference a:hover {
+    color: #4aacff;
+    }
+
+    .sectiontitle {
+    font-weight: bold;
+    font-size: medium;
+    text-align: center;
+    }
+
+    .transchange {
+    font-style:italic;
+    }
+
+    .morphSegmentation {
+    border-right: 2px solid gray;
+    }
+
+    .entry {
+    /*padding: 2px;*/
+    text-align: justify;
+    margin-top: 0px;
+    /*text-indent: -15px;*/
+    /*padding-left: 15px;*/
+    font-weight: normal;
+    }
+
+    td.entry, td.currententry {
+    vertical-align: top;
+    text-align: justify !important;
+    }
+
+    .entry[dir=rtl] {
+    text-align: right !important;
+    }
+    #printer .entry[dir=rtl] {
+    text-align:right !important;
+    }
+
+    .currententry {
+    /*padding: 2px;*/
+    /*vertical-align: middle;*/
+    text-align: justify;
+    background-color: #e6e4ff;
+    }
+
+    .currententry[dir=rtl] {
+    text-align:right !important;
+    }
+
+    div.currententry {
+    }
+
+    span.currententry {
+    background-color: #edefff !important;
+    }
+
+    td.entry + td.entry {
+    /*margin-left: 5px;*/
+    }
+
+    /* Several additional settings for display of modules*/
+    #bible div.currententry, #bible td.currententry {
+    border: 1px solid #B7B7B7;
+    /*padding: 2px;*/
+    }
+
+    #printer .entry  .entry, #printer .entry .sectiontitle , #printer .entry .booktitle {
+    /*padding-top: 0.05em;*/
+    /*margin-left: 10px;*/
+    }
+
+    .introduction {
+    font-size:80%;
+    text-align:justify;
+    }
+
+    .sup {
+    vertical-align: super;
+    }
+    .sub {
+    vertical-align: sub;
+    }
+    .right {
+    text-align: right;
+    }
+    .center {
+    text-align: center;
+    }
+
+    .bold {
+    font-weight:bold;
+    }
+    .italic {
+    font-style:italic;
+    }
+    .line-through {
+    text-decoration: line-through;
+    }
+    .small-caps {
+    font-variant: small-caps;
+    }
+    .underline {
+    text-decoration: underline;
+    }
+
+    .name > .divine {
+    font-variant: small-caps;
+    }
+
+    #infodisplay {
+    margin:0;
+    padding:0;
+    }
+
+    #infodisplay .footnoteinfo h3, #infodisplay .strongsinfo h3, #infodisplay .morphinfo h3, #infodisplay .translationinfo h3, #infodisplay .crossrefinfo h3, #infodisplay .moduleinfo h3 {
+    /*padding: 4px 4px 2px 0;*/
+    color: #a9a9a9;
+    text-align: right;
+    border-bottom: 1px solid gray;
+    }
+
+    #infodisplay > p, #infodisplay * > p, #infodisplay > .para, #infodisplay * > .para { /* We only format the first p child in a special way */
+    text-align:justify !important;
+    margin:0px;
+    padding:0px;
+    }
+    
+    #infodisplay .entry {
+    /*padding:2px;*/
+    text-align:justify !important;
+    margin-bottom:10px;
+    /*margin-left:15px;*/
+    }
+    #infodisplay .entry[dir=rtl] {
+    text-align: right !important;
+    }
+    #infodisplay .entry .entry {
+    /*margin:0px;*/
+    }
+    #infodisplay .entry .entry[dir=rtl] {
+    text-align: right !important;
+    }
+
+    #infodisplay .rangeheading {
+    font-weight:bold;
+    /*margin-left:-10px;*/
+    }
+
+    #LANG_CSS#
+
+  </style>
+</head>
+
+<body id="#DISPLAYTYPE#" class="#MODTYPE# #MODTYPE#_#MODNAME#">
+	<div id="content" lang="#LANG_ABBREV#" xml:lang="#LANG_ABBREV#" dir="#PAGE_DIRECTION#">#CONTENT#</div>
+</body>
