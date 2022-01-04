@@ -1,0 +1,13 @@
+{
+    "version": "0.2",
+    "ignorePaths": [],
+    "dictionaryDefinitions": [],
+    "dictionaries": [],
+    "words": [
+        "bibletime",
+        "btmini",
+        "clucene"
+    ],
+    "ignoreWords": [],
+    "import": []
+}
