@@ -1,0 +1,70 @@
+<RCC>
+    <qresource prefix="/share/bibletime/icons">
+<!--        <file alias="add.svg">bibletime/pics/icons/add.svg</file>
+        <file alias="automatically.svg">bibletime/pics/icons/automatically.svg</file>
+        <file alias="cascade.svg">bibletime/pics/icons/cascade.svg</file>
+        <file alias="back.svg">bibletime/pics/icons/back.svg</file>-->
+        <file alias="bible.svg">bibletime/pics/icons/bible.svg</file>
+<!--        <file alias="bibletime.ico">bibletime/pics/icons/bibletime.ico</file>
+        <file alias="bibletime.png">bibletime/pics/icons/bibletime.png</file>-->
+        <file alias="bibletime.svg">bibletime/pics/icons/bibletime.svg</file>
+        <file alias="book.svg">bibletime/pics/icons/book.svg</file>
+<!--        <file alias="bookmark.svg">bibletime/pics/icons/bookmark.svg</file>-->
+        <file alias="books.svg">bibletime/pics/icons/books.svg</file>
+        <file alias="calendar.svg">bibletime/pics/icons/calendar.svg</file>
+<!--        <file alias="checkbox.svg">bibletime/pics/icons/checkbox.svg</file>-->
+        <file alias="commentary.svg">bibletime/pics/icons/commentary.svg</file>
+<!--        <file alias="configure.svg">bibletime/pics/icons/configure.svg</file>
+        <file alias="contents2.svg">bibletime/pics/icons/contents2.svg</file>-->
+        <file alias="dictionary.svg">bibletime/pics/icons/dictionary.svg</file>
+<!--        <file alias="displayconfig.svg">bibletime/pics/icons/displayconfig.svg</file>
+        <file alias="delete.svg">bibletime/pics/icons/delete.svg</file>
+        <file alias="document_magnifier.svg">bibletime/pics/icons/document_magnifier.svg</file>
+        <file alias="exit.svg">bibletime/pics/icons/exit.svg</file>
+        <file alias="edit_clear_locationbar.svg">bibletime/pics/icons/edit_clear_locationbar.svg</file>
+        <file alias="edit_copy.svg">bibletime/pics/icons/edit_copy.svg</file>
+        <file alias="export.svg">bibletime/pics/icons/export.svg</file>
+        <file alias="file_save.svg">bibletime/pics/icons/file_save.svg</file>
+        <file alias="fileclose.svg">bibletime/pics/icons/fileclose.svg</file>-->
+        <file alias="find.svg">bibletime/pics/icons/find.svg</file>
+        <file alias="flag.svg">bibletime/pics/icons/flag.svg</file>
+<!--        <file alias="forward.svg">bibletime/pics/icons/forward.svg</file>
+        <file alias="info.svg">bibletime/pics/icons/info.svg</file>
+        <file alias="layer-visible-on.svg">bibletime/pics/icons/layer-visible-on.svg</file>-->
+        <file alias="lexicon.svg">bibletime/pics/icons/lexicon.svg</file>
+<!--        <file alias="light_bulb.svg">bibletime/pics/icons/light_bulb.svg</file>-->
+        <file alias="map.svg">bibletime/pics/icons/map.svg</file>
+        <file alias="pencil.svg">bibletime/pics/icons/pencil.svg</file>
+<!--        <file alias="plus.svg">bibletime/pics/icons/plus.svg</file>
+        <file alias="pointing_arrow.svg">bibletime/pics/icons/pointing_arrow.svg</file>-->
+        <file alias="questionable.svg">bibletime/pics/icons/questionable.svg</file>
+<!--        <file alias="questionmark.svg">bibletime/pics/icons/questionmark.svg</file>-->
+        <file alias="refresh.svg">bibletime/pics/icons/refresh.svg</file><!--
+        <file alias="startconfig.svg">bibletime/pics/icons/startconfig.svg</file>
+        <file alias="stop.svg">bibletime/pics/icons/stop.svg</file>
+        <file alias="swordconfig.svg">bibletime/pics/icons/swordconfig.svg</file>
+        <file alias="sync.svg">bibletime/pics/icons/sync.svg</file>-->
+        <file alias="unlock.svg">bibletime/pics/icons/unlock.svg</file>
+        <file alias="folder.svg">bibletime/pics/icons/folder.svg</file>
+<!--        <file alias="folder-open.svg">bibletime/pics/icons/folder-open.svg</file>
+        <file alias="fonts.svg">bibletime/pics/icons/fonts.svg</file>
+        <file alias="import.svg">bibletime/pics/icons/import.svg</file>
+        <file alias="key_bindings.svg">bibletime/pics/icons/key_bindings.svg</file>-->
+    </qresource>
+    <qresource prefix="/share/bibletime/locale">
+        <file alias="bibletime_ui_ru.qm">bibletime/i18n/messages/bibletime_ui_ru.qm</file>
+        <file alias="bibletimemini_ru.qm">bibletime/src/frontend-mini/translations/bibletimemini_ru.qm</file>
+    </qresource>
+    <qresource prefix="/share/bibletime/display-templates">
+        <file alias="Basic.tmpl">bibletime/src/display-templates/Basic-Mini.tmpl</file>
+        <file alias="Blue.css">bibletime/src/display-templates/Blue.css</file>
+    </qresource>
+    <qresource prefix="/">
+        <file alias="locales.tar.gz">bibletime/src/frontend-mini/locales.tar.gz</file>
+        <file alias="jGaramond.ttf">bibletime/src/frontend-mini/ui/jGaramond.ttf</file>
+        <file alias="handle.svg">bibletime/src/frontend-mini/view/handle.svg</file>
+        <file alias="plus.svg">bibletime/src/frontend-mini/ui/resources/plus.svg</file>
+        <file alias="mini-back.svg">bibletime/src/frontend-mini/ui/resources/back.svg</file>
+        <file alias="mini-back-night.svg">bibletime/src/frontend-mini/ui/resources/back-night.svg</file>
+    </qresource>
+</RCC>

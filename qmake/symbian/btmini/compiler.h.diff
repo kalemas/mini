@@ -1,0 +1,63 @@
+diff --git "a/D:\\dev\\qt\\qt510-rc1-42-android\\5.1.0-rc1\\Src\\qttools\\src\\assistant\\3rdparty\\clucene\\src\\CLucene\\config\\compiler.h" "b/D:\\dev\\clucene\\src\\CLucene\\config\\compiler.h"
+index 68f93b6..d0cc21c 100644
+--- "a/D:\\dev\\qt\\qt510-rc1-42-android\\5.1.0-rc1\\Src\\qttools\\src\\assistant\\3rdparty\\clucene\\src\\CLucene\\config\\compiler.h"
++++ "b/D:\\dev\\clucene\\src\\CLucene\\config\\compiler.h"
+@@ -36,9 +36,11 @@
+ #define _CLCOMPILER_MSVC _MSC_VER
+ #endif
+ 
+-#if defined(__GNUC__) || defined(__SUNPRO_CC) || defined(__xlC__) || defined(__sgi) && defined(__EDG__)
++#if defined(__GNUC__) || defined(__SUNPRO_CC) || defined(__xlC__) || defined(__sgi) && defined(__EDG__) || defined (__SYMBIAN32__)
+ #include "CLucene/config/CompilerGcc.h"
+ 
++#include <QDebug>
++
+ #elif defined(_CLCOMPILER_MSVC)
+ /* Microsoft Visual C++ */
+ #include "CLucene/config/CompilerMsvc.h"
+@@ -85,7 +87,10 @@
+ #define _WIN16
+ #error "CLucene has not been tested on this platform. Please send a report to the lucene administrators if you are able to successfully compile"
+ #else
+-#error "CLucene could not identify the platform."
++//#error "CLucene could not identify the platform."
++# define PATH_DELIMITER  _T("\\")
++# define PATH_DELIMITERA "\\"
++# define PATH_DELIMITERC '\\'
+ #endif /* platforms */
+ 
+ 
+@@ -105,6 +110,7 @@
+ #undef _ASCII
+ #endif
+ 
++#ifndef __SYMBIAN32__
+ #ifndef  _LUCENE_NO_NEW_STYLE_CASTS
+ #define __CONST_CAST(typ,var) const_cast<typ>(var)
+ #define __REINTERPRET_CAST(typ,var) reinterpret_cast<typ>(var)
+@@ -112,6 +118,7 @@
+ #define __CONST_CAST(typ,var) ((typ)(var))
+ #define __REINTERPRET_CAST,var) ((typ)(var))
+ #endif
++#endif
+ 
+ #ifndef _CL_DEPRECATE_TEXT
+ #define _CL_DEPRECATE_TEXT(_Text)
+@@ -182,7 +189,7 @@
+ //here we include the compiler header again, this gives the header a
+ //second chance at including stuff, after the main inclusions are complete
+ 
+-#if defined (__GNUC__) || defined(__SUNPRO_CC) || defined(__xlC__) || defined(__sgi)  && defined(__EDG__)
++#if defined (__GNUC__) || defined(__SUNPRO_CC) || defined(__xlC__) || defined(__sgi)  && defined(__EDG__) || defined (__SYMBIAN32__)
+ #include "CLucene/config/CompilerGcc.h"
+     
+ #elif defined(_CLCOMPILER_MSVC)
+@@ -235,7 +242,7 @@
+ //here we include the compiler header again, this gives the header a
+ //third chance at including stuff, after the main inclusions are complete
+  
+-#if defined (__GNUC__ ) || defined(__SUNPRO_CC) || defined(__xlC__) || defined(__sgi) && defined(__EDG__)
++#if defined (__GNUC__ ) || defined(__SUNPRO_CC) || defined(__xlC__) || defined(__sgi) && defined(__EDG__)|| defined (__SYMBIAN32__)
+ #include "CLucene/config/CompilerGcc.h"
+     
+ #elif defined(_CLCOMPILER_MSVC)

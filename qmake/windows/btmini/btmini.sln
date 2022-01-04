@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BibleTime-Mini", "btmini.vcproj", "{E89DCFC1-091C-4C00-9988-D210445952B3}"
+EndProject
+Project("{B900F1C2-3D47-4FEC-85B3-04AAF18C3634}") = "Deploy on WinCE", "wince.vddproj", "{8D3A6DD2-0323-4FCA-B7DD-A74E0207C84B}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Deploy on Windows", "windows.vdproj", "{6B1A4460-0156-4728-9011-641D269FA7EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I) = Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)
+		Release|Win32 = Release|Win32
+		Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I) = Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E89DCFC1-091C-4C00-9988-D210445952B3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E89DCFC1-091C-4C00-9988-D210445952B3}.Debug|Win32.Build.0 = Debug|Win32
+		{E89DCFC1-091C-4C00-9988-D210445952B3}.Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I).ActiveCfg = Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)
+		{E89DCFC1-091C-4C00-9988-D210445952B3}.Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I).Build.0 = Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)
+		{E89DCFC1-091C-4C00-9988-D210445952B3}.Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I).Deploy.0 = Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)
+		{E89DCFC1-091C-4C00-9988-D210445952B3}.Release|Win32.ActiveCfg = Release|Win32
+		{E89DCFC1-091C-4C00-9988-D210445952B3}.Release|Win32.Build.0 = Release|Win32
+		{E89DCFC1-091C-4C00-9988-D210445952B3}.Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I).ActiveCfg = Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)
+		{E89DCFC1-091C-4C00-9988-D210445952B3}.Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I).Build.0 = Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)
+		{8D3A6DD2-0323-4FCA-B7DD-A74E0207C84B}.Debug|Win32.ActiveCfg = Release
+		{8D3A6DD2-0323-4FCA-B7DD-A74E0207C84B}.Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I).ActiveCfg = Release
+		{8D3A6DD2-0323-4FCA-B7DD-A74E0207C84B}.Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I).Build.0 = Release
+		{8D3A6DD2-0323-4FCA-B7DD-A74E0207C84B}.Release|Win32.ActiveCfg = Release
+		{8D3A6DD2-0323-4FCA-B7DD-A74E0207C84B}.Release|Win32.Build.0 = Release
+		{8D3A6DD2-0323-4FCA-B7DD-A74E0207C84B}.Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I).ActiveCfg = Release
+		{6B1A4460-0156-4728-9011-641D269FA7EB}.Debug|Win32.ActiveCfg = Release
+		{6B1A4460-0156-4728-9011-641D269FA7EB}.Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I).ActiveCfg = Release
+		{6B1A4460-0156-4728-9011-641D269FA7EB}.Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I).Build.0 = Release
+		{6B1A4460-0156-4728-9011-641D269FA7EB}.Release|Win32.ActiveCfg = Release
+		{6B1A4460-0156-4728-9011-641D269FA7EB}.Release|Win32.Build.0 = Release
+		{6B1A4460-0156-4728-9011-641D269FA7EB}.Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I).ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		Qt5Version = qt-everywhere-opensource-src-4.8.5
+	EndGlobalSection
+EndGlobal

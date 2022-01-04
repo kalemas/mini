@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/bibletime/qml">
+        <file>metro.qml</file>
+        <file>worker.js</file>
+        <file>item.qml</file>
+    </qresource>
+</RCC>
