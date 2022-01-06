@@ -41,7 +41,7 @@ SOURCES += \
     ../../../bibletime/src/frontend/bookshelfwizard/btbookshelfworkspage.cpp \
     ../../../bibletime/src/frontend/bookshelfwizard/btinstallpagemodel.cpp \
     ../../../bibletime/src/frontend/bookshelfwizard/cswordsetupinstallsourcesdialog.cpp \
-    ../../../bibletime/src/frontend/bookshelfwizard\btbookshelfwizard.cpp \
+    ../../../bibletime/src/frontend/bookshelfwizard/btbookshelfwizard.cpp \
     ../../../bibletime/src/frontend/btaboutdialog.cpp \
     ../../../bibletime/src/frontend/btaboutmoduledialog.cpp \
     ../../../bibletime/src/frontend/btbookshelfdockwidget.cpp \
