@@ -198,7 +198,6 @@ QStringList CSwordModuleSearch::queryParser(const QString& queryString) {
     QString token("");
     QStringList tokenList;
     for (int cnt = 0; cnt < queryString.length(); cnt++) {
-    loop1_body:
         // add to token
         if ((queryString[cnt]).isLetterOrNumber() || (queryString[cnt] == '*')) {
             token = token + queryString[cnt];
@@ -258,7 +257,10 @@ QStringList CSwordModuleSearch::queryParser(const QString& queryString) {
         }
         // the || token is also a token break
         else {
-            if ((queryString[cnt] == '|') && (queryString[cnt+1] == '|')) {
+            if ((queryString[cnt] == '|')
+                && (cnt + 1 < queryString.length())
+                && (queryString[cnt + 1] == '|'))
+            {
                 // store away current token
                 token = token.simplified();
                 if ((token != "*") && (token != ""))
@@ -267,7 +269,10 @@ QStringList CSwordModuleSearch::queryParser(const QString& queryString) {
                 tokenList.append("||");
             }
             // the && token is also a token break
-            else if ((queryString[cnt] == '&') && (queryString[cnt+1] == '&')) {
+            else if ((queryString[cnt] == '&')
+                     && (cnt + 1 < queryString.length())
+                     && (queryString[cnt + 1] == '&'))
+            {
                 // store away current token
                 token = token.simplified();
                 if ((token != "*") && (token != ""))
@@ -278,8 +283,7 @@ QStringList CSwordModuleSearch::queryParser(const QString& queryString) {
                 continue;
             }
             token = "";
-            cnt += 2;
-            goto loop1_body;
+            ++cnt;
         }
     }
     token = token.simplified();
