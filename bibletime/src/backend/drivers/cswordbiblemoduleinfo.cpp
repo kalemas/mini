@@ -42,19 +42,19 @@ void CSwordBibleModuleInfo::initBounds() const {
     const bool oldStatus = m.isSkipConsecutiveLinks();
     m.setSkipConsecutiveLinks(true);
 
+    sword::VerseKey * key = static_cast<sword::VerseKey *>(m.getKey());
+    m_lowerBound.setVersificationSystem(key->getVersificationSystem());
+    m_upperBound.setVersificationSystem(key->getVersificationSystem());
+
     m.setPosition(sword::TOP); // position to first entry
-    sword::VerseKey key(m.getKeyText());
-    m_hasOT = (key.getTestament() == 1);
+    m_hasOT = (key->getTestament() == 1);
+    m_lowerBound.setKey(key->getText());
 
     m.setPosition(sword::BOTTOM);
-    key = m.getKeyText();
-    m_hasNT = (key.getTestament() == 2);
+    m_hasNT = (key->getTestament() == 2);
+    m_upperBound.setKey(key->getText());
 
     m.setSkipConsecutiveLinks(oldStatus);
-
-    m_lowerBound.setKey(m_hasOT ? "Genesis 1:1" : "Matthew 1:1");
-    m_upperBound.setKey(!m_hasNT ? "Malachi 4:6" : "Revelation of John 22:21");
-
     m_boundsInitialized = true;
 }
 
@@ -74,29 +74,14 @@ QStringList *CSwordBibleModuleInfo::books() const {
     if (!m_bookList) {
         m_bookList = new QStringList();
 
-        // Initialize m_hasOT and m_hasNT
         if (!m_boundsInitialized)
             initBounds();
 
-        int min = 1; // 1 = OT
-        int max = 2; // 2 = NT
-
-        if (!m_hasOT)
-            min++; // min == 2
-
-        if (!m_hasNT)
-            max--; // max == 1
-
-        if (min > max) {
-            qWarning("CSwordBibleModuleInfo (%s) no OT and not NT! Check your config!", module().getName());
-        } else {
-            std::unique_ptr<sword::VerseKey> key(
-                    static_cast<sword::VerseKey *>(module().createKey()));
-            key->setPosition(sword::TOP);
-
-            for (key->setTestament(min); !key->popError() && key->getTestament() <= max; key->setBook(key->getBook() + 1)) {
-                m_bookList->append( QString::fromUtf8(key->getBookName()) );
-            }
+        for (sword::VerseKey key(m_lowerBound);
+             !key.popError() && key.compare(m_upperBound) <= 0;
+             key.setBook(key.getBook() + 1))
+        {
+            m_bookList->append( QString::fromUtf8(key.getBookName()) );
         }
     }
 
