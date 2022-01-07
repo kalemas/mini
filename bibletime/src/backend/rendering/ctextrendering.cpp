@@ -117,7 +117,7 @@ CTextRendering::KeyTreeItem::KeyTreeItem(const QString &startKey,
                                             KeyTreeItem::Settings{
                                                 false,
                                                 settings.keyRenderingFace}));
-                ok = start.next(CSwordVerseKey::UseVerse);
+                ok = start.next();
             }
         }
         else if (m_key.isEmpty()) {
@@ -266,7 +266,7 @@ const QString CTextRendering::renderKeyRange(
                 vk_start->setVerse(0);
             }
             tree.append( new KeyTreeItem(vk_start->key(), modules, settings) );
-            if (!vk_start->next(CSwordVerseKey::UseVerse)) {
+            if (!vk_start->next()) {
                 /// \todo Notify the user about this failure.
                 break;
             }
