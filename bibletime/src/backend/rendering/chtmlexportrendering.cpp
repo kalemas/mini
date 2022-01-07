@@ -117,25 +117,8 @@ QString CHTMLExportRendering::renderEntry(KeyTreeItem const & i, CSwordKey * k)
                        .append("\"");
         }
 
-        if (key->isValid() && i.key() == key->key()) {
+        if (key->isValid()) {
             key_renderedText = key->renderedText();
-
-            // if key was expanded
-            if (CSwordVerseKey const * const vk =
-                    dynamic_cast<CSwordVerseKey *>(key))
-            {
-                if (vk->isBoundSet()) {
-                    CSwordVerseKey pk(*vk);
-                    for (auto i = vk->getLowerBound().getIndex();
-                         i < vk->getUpperBound().getIndex();
-                         ++i)
-                    {
-                        key_renderedText += " ";
-                        pk.setIndex(i + 1);
-                        key_renderedText += pk.renderedText();
-                    }
-                }
-            }
         } else {
             key_renderedText = "<span class=\"inactive\">&#8212;</span>";
         }
