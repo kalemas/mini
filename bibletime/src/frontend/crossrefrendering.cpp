@@ -33,17 +33,13 @@ QString CrossRefRendering::finishText(const QString &text, const KeyTree &tree) 
     return text;
 }
 
-QString CrossRefRendering::entryLink(const KeyTreeItem &item,
-                                     const CSwordModuleInfo *module)
-{
-    BT_ASSERT(module);
+QString CrossRefRendering::entryLink(const KeyTreeItem & item,
+                                     const CSwordKey * key) {
+    BT_ASSERT(key && key->module());
     QString linkText;
 
-    const bool isBible = (module->type() == CSwordModuleInfo::Bible);
-    CSwordVerseKey vk(module); //only valid for bible modules, i.e. isBible == true
-    if (isBible) {
-        vk.setKey(item.key());
-    }
+    const bool isBible = key->module()->type() == CSwordModuleInfo::Bible;
+    const CSwordVerseKey * verseKey = static_cast<const CSwordVerseKey *>(key);
 
     switch (item.settings().keyRenderingFace) {
         case KeyTreeItem::Settings::NoKey:
@@ -51,21 +47,21 @@ QString CrossRefRendering::entryLink(const KeyTreeItem &item,
             break; //no key is valid for all modules
         case KeyTreeItem::Settings::CompleteShort:
             if (isBible) {
-                linkText = QString::fromUtf8(vk.getShortText());
+                linkText = QString::fromUtf8(verseKey->getShortText());
                 break;
             }
             //fall through for non-Bible modules
             Q_FALLTHROUGH();
         case KeyTreeItem::Settings::CompleteLong:
             if (isBible) {
-                linkText = vk.key();
+                linkText = verseKey->key();
                 break;
             }
             //fall through for non-Bible modules
             Q_FALLTHROUGH();
         case KeyTreeItem::Settings::SimpleKey:
             if (isBible) {
-                linkText = QString::number(vk.getVerse());
+                linkText = QString::number(verseKey->getVerse());
                 break;
             }
             //fall through for non-Bible modules
@@ -79,14 +75,10 @@ QString CrossRefRendering::entryLink(const KeyTreeItem &item,
     if (!linkText.isEmpty()) { //if we have a valid link text
         //     qWarning("rendering");
         return QString("<a href=\"%1\">%2</a>")
-               .arg(
-                   ReferenceManager::encodeHyperlink(
-                       module->name(),
-                       item.key(),
-                       ReferenceManager::typeFromModule(module->type())
-                   )
-               )
-               .arg(linkText);
+            .arg(ReferenceManager::encodeHyperlink(
+                key->module()->name(), key->key(),
+                ReferenceManager::typeFromModule(key->module()->type())))
+            .arg(linkText);
     }
 
     return QString();

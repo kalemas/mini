@@ -18,6 +18,7 @@
 #include <QString>
 
 #include "../drivers/btmodulelist.h"
+#include "../keys/cswordkey.h"
 
 
 class CSwordKey;
@@ -79,6 +80,10 @@ class CTextRendering {
                             const BtConstModuleList &modules,
                             const Settings &settings);
 
+                KeyTreeItem(const CSwordKey * key,
+                            const BtConstModuleList & modules,
+                            const Settings & settings);
+
                 KeyTreeItem(const QString &startKey,
                             const QString &stopKey,
                             const CSwordModuleInfo *module,
@@ -108,6 +113,10 @@ class CTextRendering {
                     return m_key;
                 }
 
+                inline const CSwordKey * swordKey() const {
+                    return m_swordKey.get();
+                }
+
                 inline const Settings& settings() const {
                     return m_settings;
                 }
@@ -116,13 +125,6 @@ class CTextRendering {
                     return &m_childList;
                 }
 
-                inline void setMappedKey(CSwordKey const * key) const {
-                    m_mappedKey = key;
-                }
-
-                inline CSwordKey const * mappedKey() const {
-                    return m_mappedKey;
-                }
 
             protected: /* Methods: */
 
@@ -132,8 +134,9 @@ class CTextRendering {
 
                 Settings m_settings;
                 BtConstModuleList m_moduleList;
-                QString m_key;
-                mutable CSwordKey const * m_mappedKey = nullptr;
+                QString m_key; // TODO optimize
+                std::unique_ptr<CSwordKey> m_swordKey = nullptr;
+
                 mutable KeyTree m_childList;
 
                 QString m_stopKey;

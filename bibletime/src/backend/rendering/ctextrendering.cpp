@@ -61,6 +61,17 @@ CTextRendering::KeyTreeItem::KeyTreeItem(const QString &key,
         m_alternativeContent( QString() ) {
 }
 
+CTextRendering::KeyTreeItem::KeyTreeItem(const CSwordKey * key,
+                                         const BtConstModuleList & mods,
+                                         const Settings & settings)
+    : m_settings(settings)
+    , m_moduleList(mods)
+    , m_key(key->key())
+    , m_swordKey(key->copy())
+    , m_childList()
+    , m_stopKey(QString())
+    , m_alternativeContent(QString()) {}
+
 CTextRendering::KeyTreeItem::KeyTreeItem()
         : m_settings(),
         m_moduleList(),

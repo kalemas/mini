@@ -31,20 +31,14 @@ CDisplayRendering::CDisplayRendering(const DisplayOptions &displayOptions,
     // Intentionally empty
 }
 
-QString CDisplayRendering::entryLink(const KeyTreeItem &item,
-                                     const CSwordModuleInfo * module)
-{
+QString CDisplayRendering::entryLink(const KeyTreeItem & item,
+                                     const CSwordKey * key) {
     QString linkText;
 
-    const bool isBible = module && (module->type() == CSwordModuleInfo::Bible);
-    CSwordVerseKey vk(module); //only valid for bible modules, i.e. isBible == true
-    vk.setIntros(true);
+    const bool isBible = key->module()->type() == CSwordModuleInfo::Bible;
+    const CSwordVerseKey * verseKey = static_cast<const CSwordVerseKey *>(key);
 
-    if (isBible) {
-        vk.setKey(item.mappedKey() ? item.mappedKey()->key() : item.key());
-    }
-
-    if (isBible && (vk.getVerse() == 0)) {
+    if (isBible && (verseKey->getVerse() == 0)) {
         return QString(); //Warning: return already here
     }
 
@@ -56,50 +50,55 @@ QString CDisplayRendering::entryLink(const KeyTreeItem &item,
 
     case KeyTreeItem::Settings::ExpandedShort:
         if (isBible) {
-            linkText = module->name() + ':' + QString::fromUtf8(vk.getShortText());
+            linkText = key->module()->name() + ':' +
+                       QString::fromUtf8(verseKey->getShortText());
             break;
         }
         Q_FALLTHROUGH();
 
     case KeyTreeItem::Settings::CompleteShort:
         if (isBible) {
-            linkText = QString::fromUtf8(vk.getShortText());
+            linkText = QString::fromUtf8(verseKey->getShortText());
             break;
         }
         Q_FALLTHROUGH();
 
     case KeyTreeItem::Settings::ExpandedLong:
         if (isBible) {
-            linkText = QString("%1 (%2)").arg(vk.key()).arg(module->name());
+            linkText = QString("%1 (%2)")
+                           .arg(verseKey->key())
+                           .arg(verseKey->module()->name());
             break;
         }
         Q_FALLTHROUGH();
 
     case KeyTreeItem::Settings::CompleteLong:
         if (isBible) {
-            linkText = vk.key();
+            linkText = verseKey->key();
             break;
         }
         Q_FALLTHROUGH();
 
     case KeyTreeItem::Settings::SimpleKey:
         if (isBible) {
-            if(item.mappedKey() != nullptr) {
-                CSwordVerseKey baseKey(*item.modules().begin());
-                baseKey.setKey(item.key());
+            if (item.key() != verseKey->key()) {
+                const CSwordVerseKey * baseKey =
+                    static_cast<const CSwordVerseKey *>(item.swordKey());
 
-                if (vk.book() != baseKey.book()) {
-                    linkText = QString::fromUtf8(vk.getShortText());
-                } else if (vk.getChapter() != baseKey.getChapter()) {
-                    linkText = QString("%1:%2").arg(vk.getChapter()).arg(vk.getVerse());
+                if (verseKey->getBook() != baseKey->getBook()) {
+                    linkText = QString::fromUtf8(verseKey->getShortText());
+                } else if (verseKey->getChapter() != baseKey->getChapter()) {
+                    linkText = QString("%1:%2")
+                                   .arg(verseKey->getChapter())
+                                   .arg(verseKey->getVerse());
                 } else {
-                    linkText = QString::number(vk.getVerse());
+                    linkText = QString::number(verseKey->getVerse());
                 }
 
-                if(vk.isBoundSet()) {
+                if (verseKey->isBoundSet()) {
                     linkText += "-";
-                    sword::VerseKey const upper = vk.getUpperBound();
-                    sword::VerseKey const lower = vk.getLowerBound();
+                    sword::VerseKey const upper = verseKey->getUpperBound();
+                    sword::VerseKey const lower = verseKey->getLowerBound();
                     if (upper.getBook() != lower.getBook()) {
                         linkText += QString::fromUtf8(upper.getShortText());
                     } else if(upper.getChapter() != lower.getChapter()) {
@@ -110,7 +109,7 @@ QString CDisplayRendering::entryLink(const KeyTreeItem &item,
                     }
                 }
             } else {
-                linkText = QString::number(vk.getVerse());
+                linkText = QString::number(verseKey->getVerse());
             }
             break;
         } // else fall through for non-Bible modules
@@ -125,14 +124,17 @@ QString CDisplayRendering::entryLink(const KeyTreeItem &item,
 
     if (linkText.isEmpty()) {
         return QString("<a name=\"").append(keyToHTMLAnchor(item.key())).append("\"></a>");
-    }
-    else {
-        return QString("<a name=\"").append(keyToHTMLAnchor(item.key())).append("\" ")
-               .append("href=\"")
-               .append(ReferenceManager::encodeHyperlink(
-                           module->name(), item.key(), ReferenceManager::typeFromModule(module->type()))
-                      )
-               .append("\">").append(linkText).append("</a>\n");
+    } else {
+        return QString("<a name=\"")
+            .append(keyToHTMLAnchor(item.key()))
+            .append("\" ")
+            .append("href=\"")
+            .append(ReferenceManager::encodeHyperlink(
+                key->module()->name(), key->key(),
+                ReferenceManager::typeFromModule(key->module()->type())))
+            .append("\">")
+            .append(linkText)
+            .append("</a>\n");
     }
 }
 

@@ -35,7 +35,7 @@ public: /* Methods: */
 private: /* Methods: */
 
     QString entryLink(KeyTreeItem const & item,
-                      CSwordModuleInfo const * module) override;
+                      const CSwordKey * key) override;
 
     QString renderEntry(KeyTreeItem const & item,
                         CSwordKey * const key = nullptr) override;

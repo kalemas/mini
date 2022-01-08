@@ -86,3 +86,58 @@ const QString CEntryDisplay::textKeyRendering(
     tree.append( new Rendering::CTextRendering::KeyTreeItem(keyName, modules, normal_settings) );
     return render.renderKeyTree(tree);
 }
+
+const QString CEntryDisplay::textKeyRendering(
+    const BtConstModuleList & modules, const CSwordKey & key,
+    const DisplayOptions & displayOptions, const FilterOptions & filterOptions,
+    CTextRendering::KeyTreeItem::Settings::KeyRenderingFace keyRendering) {
+    // TODO optimize
+
+    if (!key.isValid())
+        return QString("");
+
+    CDisplayRendering render(displayOptions, filterOptions);
+
+    // no highlighted key and no extra key link in the text
+    CTextRendering::KeyTreeItem::Settings normal_settings{false, keyRendering};
+    const CSwordModuleInfo * module = modules.first();
+
+    Rendering::CTextRendering::KeyTree tree;
+
+    // in Bibles and Commentaries we need to check if 0:0 and X:0 contain
+    // something
+    if (module->type() == CSwordModuleInfo::Bible ||
+        module->type() == CSwordModuleInfo::Commentary) {
+        // HACK: enable headings for VerseKeys
+        static_cast<sword::VerseKey *>(module->module().getKey())
+            ->setIntros(true);
+
+        CSwordVerseKey k1(module);
+        k1.setIntros(true);
+        k1.setKey(key.key());
+
+        // don't print the key
+        CTextRendering::KeyTreeItem::Settings preverse_settings{
+            false, CTextRendering::KeyTreeItem::Settings::NoKey};
+
+        if (k1.getVerse() == 1) {       // X:1, prepend X:0
+            if (k1.getChapter() == 1) { // 1:1, also prepend 0:0 before that
+                k1.setChapter(0);
+                k1.setVerse(0);
+                if (k1.rawText().length() > 0) {
+                    tree.append(new Rendering::CTextRendering::KeyTreeItem(
+                        &k1, modules, preverse_settings));
+                }
+                k1.setChapter(1);
+            }
+            k1.setVerse(0);
+            if (k1.rawText().length() > 0) {
+                tree.append(new Rendering::CTextRendering::KeyTreeItem(
+                    &k1, modules, preverse_settings));
+            }
+        }
+    }
+    tree.append(new Rendering::CTextRendering::KeyTreeItem(&key, modules,
+                                                           normal_settings));
+    return render.renderKeyTree(tree);
+}

@@ -43,8 +43,7 @@ protected: /* Methods: */
     QString renderEntry(KeyTreeItem const & item,
                         CSwordKey * key = nullptr) override;
     QString finishText(QString const & text, KeyTree const & tree) override;
-    virtual QString entryLink(KeyTreeItem const & item,
-                              CSwordModuleInfo const * module);
+    virtual QString entryLink(KeyTreeItem const & item, const CSwordKey * key);
     void initRendering() override;
 
 protected: /* Fields: */

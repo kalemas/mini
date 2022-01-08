@@ -32,49 +32,37 @@ CHTMLExportRendering::CHTMLExportRendering(
     , m_addText(addText)
 {}
 
-QString CHTMLExportRendering::renderEntry(KeyTreeItem const & i, CSwordKey * k)
-{
-    if (i.hasAlternativeContent()) {
-        QString ret = i.settings().highlight
+QString CHTMLExportRendering::renderEntry(KeyTreeItem const & item,
+                                          CSwordKey * k) {
+    if (item.hasAlternativeContent()) {
+        QString ret = item.settings().highlight
                       ? "<div class=\"currententry\">"
                       : "<div class=\"entry\">";
-        ret.append(i.getAlternativeContent());
+        ret.append(item.getAlternativeContent());
 
-        if (!i.childList()->isEmpty()) {
-            KeyTree const & tree = *i.childList();
+        if (!item.childList()->isEmpty()) {
+            KeyTree const & tree = *item.childList();
 
             BtConstModuleList const modules(collectModules(tree));
-
             if (modules.count() == 1)
                 // insert the direction into the surrounding div:
                 ret.insert(5,
                            QString("dir=\"%1\" ")
                                .arg(modules.first()->textDirectionAsHtml()));
 
-            Q_FOREACH (KeyTreeItem const * const item, tree)
-                ret.append(renderEntry(*item));
+            Q_FOREACH (KeyTreeItem const * const i, tree)
+                ret.append(renderEntry(*i));
         }
 
         ret.append("</div>");
         return ret; // WARNING: Return already here!
     }
 
-
-    BtConstModuleList const & modules(i.modules());
-    if (modules.isEmpty())
+    if (item.modules().isEmpty())
         return ""; // no module present for rendering
 
-    std::unique_ptr<CSwordKey> scoped_key(
-            !k ? CSwordKey::createInstance(modules.first()) : nullptr);
-    CSwordKey * const key = k ? k : scoped_key.get();
-    BT_ASSERT(key);
-
-    CSwordVerseKey * const myVK = dynamic_cast<CSwordVerseKey *>(key);
-    if (myVK)
-        myVK->setIntros(true);
-
-    QString renderedText((modules.count() > 1) ? "\n\t\t<tr>\n" : "\n");
     // Only insert the table stuff if we are displaying parallel.
+    QString renderedText((item.modules().count() > 1) ? "\n\t\t<tr>\n" : "\n");
 
     //declarations out of the loop for optimization
     QString entry;
@@ -83,21 +71,16 @@ QString CHTMLExportRendering::renderEntry(KeyTreeItem const & i, CSwordKey * k)
     QString langAttr;
     QString key_renderedText;
 
-    for (auto const & modulePtr : modules) {
-        if (myVK) {
-            key->setModule(*modules.begin());
-            key->setKey(i.key());
-
-            // this would change key position due to v11n translation
-            key->setModule(modulePtr);
-        } else {
-            key->setModule(modulePtr);
-            key->setKey(i.key());
-        }
-
-        // indicate that key was changed
-        i.setMappedKey(key->key() != i.key() ? key : nullptr);
-
+    for (auto const & modulePtr : item.modules()) {
+        std::unique_ptr<CSwordKey> key(CSwordKey::createInstance(
+            item.swordKey() ? item.swordKey()->module() : modulePtr));
+        CSwordVerseKey * const verseKey =
+            dynamic_cast<CSwordVerseKey *>(key.get());
+        if (verseKey)
+            verseKey->setIntros(true);
+        key->setKey(item.key());
+        // changing module may translate verse to different v11n
+        key->setModule(modulePtr);
 
         isRTL = (modulePtr->textDirection() == CSwordModuleInfo::RightToLeft);
         entry = QString();
@@ -123,7 +106,8 @@ QString CHTMLExportRendering::renderEntry(KeyTreeItem const & i, CSwordKey * k)
             key_renderedText = "<span class=\"inactive\">&#8212;</span>";
         }
 
-        if (m_filterOptions.headings && key->isValid() && i.key() == key->key()) {
+        if (m_filterOptions.headings && key->isValid() &&
+            item.key() == key->key()) {
 
             // only process EntryAttributes, do not render, this might destroy the EntryAttributes again
             swModule.renderText(nullptr, -1, 0);
@@ -165,40 +149,44 @@ QString CHTMLExportRendering::renderEntry(KeyTreeItem const & i, CSwordKey * k)
 
         entry.append(m_displayOptions.lineBreaks  ? "<div class=\""  : "<div class=\"inline ");
 
-        if (modules.count() == 1) //insert only the class if we're not in a td
-            entry.append( i.settings().highlight  ? "currententry " : "entry " );
+        // insert only the class if we're not in a td
+        if (item.modules().count() == 1)
+            entry.append(item.settings().highlight ? "currententry "
+                                                   : "entry ");
         entry.append("\"");
         entry.append(langAttr).append(isRTL ? " dir=\"rtl\">" : " dir=\"ltr\">");
 
         //keys should normally be left-to-right, but this doesn't apply in all cases
-        if(key->isValid() && i.key() == key->key())
-            entry.append("<span class=\"entryname\" dir=\"ltr\">").append(entryLink(i, modulePtr)).append("</span>");
+        if (key->isValid())
+            entry.append("<span class=\"entryname\" dir=\"ltr\">")
+                .append(entryLink(item, key.get()))
+                .append("</span>");
 
         if (m_addText)
             entry.append(key_renderedText);
 
-        if (!i.childList()->isEmpty())
-            Q_FOREACH (KeyTreeItem const * const c, *(i.childList()))
+        if (!item.childList()->isEmpty())
+            Q_FOREACH (KeyTreeItem const * const c, *(item.childList()))
                 entry.append(renderEntry(*c));
 
         entry.append("</div>");
 
-        if (modules.count() == 1) {
+        if (item.modules().count() == 1) {
             renderedText.append("\t\t").append(entry).append("\n");
         } else {
             renderedText.append("\t\t<td class=\"")
-                .append(i.settings().highlight ? "currententry" : "entry")
+                .append(item.settings().highlight ? "currententry" : "entry")
                 .append("\" ")
                 .append(langAttr)
                 .append(" dir=\"")
                 .append(isRTL ? "rtl" : "ltr")
-                .append("\">\n")
-                .append( "\t\t\t" ).append( entry ).append("\n")
-                .append("\t\t</td>\n");
+                .append("\">\n\t\t\t")
+                .append(entry)
+                .append("\n\t\t</td>\n");
         }
     }
 
-    if (modules.count() > 1)
+    if (item.modules().count() > 1)
         renderedText.append("\t\t</tr>\n");
 
     //  qDebug("CHTMLExportRendering: %s", renderedText.latin1());
@@ -234,7 +222,8 @@ QString CHTMLExportRendering::finishText(QString const & text,
     \fn CHTMLExportRendering::entryLink( KeyTreeItem& item )
  */
 QString CHTMLExportRendering::entryLink(KeyTreeItem const & item,
-                                        CSwordModuleInfo const *)
-{ return item.key(); }
+                                        const CSwordKey * key) {
+    return item.key();
+}
 
 }//end of namespace "Rendering"
