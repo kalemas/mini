@@ -1,0 +1,6 @@
+BasedOnStyle: LLVM
+PointerAlignment: Middle
+ColumnLimit: 79
+IndentWidth: 4
+# IndentAccessModifiers: true  # clang-format 13 required
+BreakConstructorInitializers: BeforeComma
